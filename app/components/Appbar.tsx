@@ -2,13 +2,13 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { ThemeSwitcher } from "./ThemeSwitcher";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+// import { ThemeSwitcher } from "./ThemeSwitcher";
+// import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import Link from "next/link";
 
 
 export function Appbar({ showThemeSwitch = true , isSpectator=false }) {
-  const session = useSession();
+//   const session = useSession();
   const router = useRouter();
 
   return (
@@ -22,8 +22,8 @@ export function Appbar({ showThemeSwitch = true , isSpectator=false }) {
         Melofi
       </div>
       <div className="flex items-center gap-x-2">
-        {isSpectator && <WalletMultiButton/>}
-        {session.data?.user && (
+        {/* {isSpectator && <WalletMultiButton/>} */}
+        {/* {session.data?.user && ( */}
           <Button
             className="bg-purple-600 text-white hover:bg-purple-700"
             onClick={() =>
@@ -34,14 +34,14 @@ export function Appbar({ showThemeSwitch = true , isSpectator=false }) {
           >
             Logout
           </Button>
-        )}
-        {!session.data?.user && (
+        {/* )} */}
+        {/* {!session.data?.user && ( */}
           <div className="space-x-3">
             <Button
               className="bg-purple-600 text-white hover:bg-purple-700"
               onClick={() => router.push("/auth")}
             >
-              SignIn
+             SignIn
             </Button>
             <Link
               href={{
@@ -53,15 +53,15 @@ export function Appbar({ showThemeSwitch = true , isSpectator=false }) {
             >
               <Button
                 variant={"ghost"}
-                className="text-white hover:bg-white/10"
+                className="bg-purple-600 text-white hover:bg-purple-700"
               >
                 SignUp
               </Button>
             </Link>
           </div>
-        )}
+        {/* )} */}
         
-        {showThemeSwitch && <ThemeSwitcher />}
+        {/* {showThemeSwitch && <ThemeSwitcher />} */}
       </div>
     </div>
   );
