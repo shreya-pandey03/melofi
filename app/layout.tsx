@@ -32,9 +32,6 @@
 //       <Providers>
 //        {children}
 //       </Providers>
-              
-        
-     
 //       </body>
 //     </html>
 //   );
@@ -44,9 +41,18 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 // import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import { Providers } from './providers';
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+});
 
 export const metadata: Metadata = {
   title: 'Crowdplay - Fan-Powered Music for Creators',
@@ -71,16 +77,33 @@ export const metadata: Metadata = {
   },
 }
 
+// export default function RootLayout({
+//   children,
+// }: Readonly<{
+//   children: React.ReactNode
+// }>) {
+//   return (
+//     <html lang="en">
+//       <body className="font-sans antialiased">
+//         {children}
+//       </body>
+//     </html>
+//   )
+// }
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
-        {children}
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+      <Providers>
+       {children}
+      </Providers>
       </body>
     </html>
-  )
+  );
 }

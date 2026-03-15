@@ -2,12 +2,14 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Users, Radio, Headphones } from "lucide-react";
 import { Appbar } from "./components/Appbar";
+import { Redirect } from "./components/Redirect";
 
 export default async function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-gray-950 text-white">
         <>
         <Appbar/>
+        <Redirect/>
         </>
       {/* Hero Section */}
       <main className="flex-1 py-20 md:py-28">
@@ -106,9 +108,9 @@ export default async function Home() {
                 query: { authType: "signUp" },
               }}
             >
-              <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-5">
+              {/* <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-5">
                 Sign Up
-              </Button>
+              </Button> */}
             </Link>
           </div>
 
